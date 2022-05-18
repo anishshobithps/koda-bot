@@ -11,7 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/node-cron": "^3.0.1",
     "discord.js": "^13.7.0",
+    "node-cron": "^3.0.0",
     "node-fetch": "^3.2.4"
   }
 }

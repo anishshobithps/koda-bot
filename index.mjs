@@ -1,5 +1,8 @@
 import fetch from 'node-fetch';
 import { Client, Intents, Constants } from 'discord.js';
+import cron from 'node-cron';
+
+// */30 * * * *
 
 const { Events } = Constants;
 
@@ -11,6 +14,24 @@ client.once(Events.CLIENT_READY, () => {
     `Server count: ${client.guilds.cache.size}`,
     `Server names: ${client.guilds.cache.map(guild => guild.name).join('\n')}`,
     ].join('\n'));
+
+    cron.schedule('*/30 * * * *', async () => {
+        const data = await getData();
+        console.log(`Sending message... at ${new Date()}`);
+        const messageX = [
+            `\n***__This is an Automatically Sent Message__***`,
+            // @ts-ignore
+            `**${data.text}**`,
+            // @ts-ignore
+            `Source: __https://${data.source}__`,
+            // @ts-ignore
+            `Permalink: __${data.permalink}__\n`
+        ].join('\n');
+
+        client.channels.cache.get('976177214766870598')
+        // @ts-ignore
+        .send(messageX);
+    });
 });
 
 client.on(Events.MESSAGE_CREATE, async (message) => {
