@@ -22,7 +22,7 @@ client.on(Events.MESSAGE_CREATE, async (message) => {
     const command = args.shift().toLowerCase();
 
     if (message.channel.id !== channelID) {
-        message.channel.send(`Please use #${channelID}> for useless facts.`);
+        message.channel.send(`Please use #${channelID}> for useless facts`);
         return;
     }
 
