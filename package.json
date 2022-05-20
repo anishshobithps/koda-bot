@@ -15,5 +15,8 @@
     "discord.js": "^13.7.0",
     "node-cron": "^3.0.0",
     "node-fetch": "^3.2.4"
+  },
+  "devDependencies": {
+    "typescript": "^4.6.4"
   }
 }
