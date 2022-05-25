@@ -1,0 +1,18 @@
+{
+	"extends": "@sapphire/ts-config",
+	"compilerOptions": {
+		"rootDir": "src",
+		"outDir": "dist",
+		"baseUrl": "src",
+		"module": "ESNext",
+		"strict": true,
+		"tsBuildInfoFile": "dist/.tsbuildinfo",
+		"paths": {
+			"#lib/*": ["./lib/*"],
+			"#utils/*": ["./lib/utils/*"],
+			"#env/*": ["./lib/utils/env/*"],
+		},
+		"forceConsistentCasingInFileNames": false,
+	},
+	"include": ["src"]
+}
