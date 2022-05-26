@@ -3,7 +3,7 @@ import { KodaClient } from '#lib/structures/KodaClient';
 
 const client = new KodaClient({
 	intents: ['GUILDS', 'GUILD_MESSAGES'],
-	shards: 'auto',
+	shards: 'auto'
 });
 
 const main = async () => {

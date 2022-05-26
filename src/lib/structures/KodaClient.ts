@@ -8,8 +8,8 @@ export class KodaClient extends SapphireClient {
 	public tasks: TaskStore;
 	public constructor(options: ClientOptions) {
 		super({
-			defaultPrefix: envParseString('PREFIX') || 'k!',
-			regexPrefix: new RegExp(`^((hey|yo|howdy|sup|hi) +)?${envParseString('BOT_NAME') || 'BOT'}[,! ]`, 'i'),
+			defaultPrefix: envParseString('PREFIX', process.env.PREFIX) || 'k!',
+			regexPrefix: new RegExp(`^((hey|yo|howdy|sup|hi) +)?${envParseString('BOT_NAME', process.env.BOT_NAME) || 'BOT'}[,! ]`, 'i'),
 			caseInsensitiveCommands: true,
 			loadMessageCommandListeners: true,
 			logger: {
@@ -27,6 +27,15 @@ export class KodaClient extends SapphireClient {
 
 	}
 
+
+	public override async destroy() {
+		this.logger.warn('Destroying client in 5 seconds...');
+		super.destroy();
+		setTimeout(() => {
+			this.logger.info('Destroyed Client.');
+			process.exit(0);
+		}, 5000);
+	}
 
 
   /**

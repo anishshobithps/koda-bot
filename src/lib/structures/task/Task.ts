@@ -1,7 +1,7 @@
-import type { PieceContext, PieceJSON, PieceOptions } from '@sapphire/pieces';
 import { Piece } from '@sapphire/pieces';
 import cron from 'node-cron';
-import type { Object } from 'ts-toolbelt';
+import type { PieceContext, PieceJSON, PieceOptions } from '@sapphire/pieces';
+import type { RequireAtLeastOne } from 'type-fest';
 import { Events } from '#lib/utils/events';
 
 /**
@@ -75,4 +75,4 @@ export abstract class Task extends Piece {
   public abstract run(): unknown;
 }
 
-export type TaskOptions = Object.Either<PieceOptions & { cron: string; interval: number }, 'cron' | 'interval'>;
+export type TaskOptions = RequireAtLeastOne<PieceOptions & { cron: string; interval: number }, 'cron' | 'interval'>

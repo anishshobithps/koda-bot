@@ -24,13 +24,15 @@
     "@sapphire/plugin-editable-commands": "^1.2.0",
     "@sapphire/plugin-hmr": "^1.2.0",
     "@sapphire/plugin-logger": "^2.2.1",
+    "@sapphire/type": "^2.2.4",
     "@sapphire/utilities": "^3.6.2",
     "colorette": "^2.0.16",
     "discord.js": "^13.7.0",
     "dotenv-cra": "^3.0.2",
     "figlet": "^1.5.2",
     "node-cron": "^3.0.0",
-    "reflect-metadata": "^0.1.13"
+    "reflect-metadata": "^0.1.13",
+    "type-fest": "^2.13.0"
   },
   "devDependencies": {
     "@sapphire/prettier-config": "^1.4.3",

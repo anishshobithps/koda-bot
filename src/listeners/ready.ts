@@ -1,4 +1,5 @@
-import { Listener, Store, type ListenerOptions, type PieceContext } from '@sapphire/framework';
+import { Events, Listener, Store, type ListenerOptions } from '@sapphire/framework';
+import { ApplyOptions } from '@sapphire/decorators';
 import { textSync } from 'figlet';
 import { blue, gray, green, magenta, magentaBright, white, yellow, cyan } from 'colorette';
 import { capitalize } from '#lib/utils/capitalize';
@@ -6,22 +7,24 @@ import { pluralise } from '#lib/utils/pluralise';
 
 const dev = process.env.NODE_ENV !== 'production';
 
-export class UserEvent extends Listener {
+@ApplyOptions<ListenerOptions>({
+	event: Events.ClientReady,
+	once: true
+})
+export class ReadyEvent extends Listener {
 	private readonly style = dev ? yellow : blue;
-
-	public constructor(context: PieceContext, options?: ListenerOptions) {
-		super(context, {
-			...options,
-			once: true
-		});
-	}
 
 	public async run() {
 		this.printBanner();
 		this.printStoreDebugInformation();
-		await this.container.stores.get('tasks').get('useless')?.run()
+		await this.runTasks();
 	}
 
+	public async runTasks() {
+		for (const task of this.container.stores.get('tasks').values()) {
+			await task.run();
+		}
+	}
 
 	private printBanner() {
 

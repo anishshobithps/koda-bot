@@ -1,13 +1,15 @@
-import { ApplyOptions } from '@sapphire/decorators';
 import fetch from 'node-fetch';
-import type { TextChannel } from 'discord.js';
+import { ApplyOptions } from '@sapphire/decorators';
 import { Task, type TaskOptions } from '#lib/structures/task/Task';
 import { envParseString } from '#lib/utils/env/parser';
+import type { TextChannel } from 'discord.js';
 
-@ApplyOptions<TaskOptions>({ cron: '*/30 * * * *' })
-export default class UselessTask extends Task {
-	public async run() {
-		const channel = this.container.client.channels.cache.get(envParseString('USELESS_CHANNEL')) as TextChannel;
+@ApplyOptions<TaskOptions>({
+	cron: '*/30 * * * *'
+})
+export class UselessTask extends Task {
+	public override async run() {
+		const channel = this.container.client.channels.cache.get(envParseString('USELESS_CHANNEL', process.env.USELESS_CHANNEL)) as TextChannel;
 		const data = await this.getData();
 		const messageX = [
 			`\n***__This is an Automatically Sent Message__***`,
