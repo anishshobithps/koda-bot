@@ -5,7 +5,8 @@ import { envParseString } from '#env/parser';
 import type { TextChannel } from 'discord.js';
 
 @ApplyOptions<TaskOptions>({
-	cron: '*/30 * * * *'
+	cron: '*/30 * * * *',
+	enabled: false
 })
 export class UselessTask extends Task {
 	public override async run() {
