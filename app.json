@@ -1,0 +1,33 @@
+{
+	"name":"koda",
+	"description": "A Discord bot for KODA GALAXY",
+	"buildpacks": [
+		{
+			"url": "heroku/nodejs"
+		}
+	],
+	"formation": {
+		"web": {
+			"quantity": 1,
+			"size": "free"
+		}
+	},
+	"env": {
+		"DISCORD_TOKEN": {
+			"description": "Your discord bot's client token.",
+			"required": true
+		},
+        "USELESS_CHANNEL": {
+            "description": "The channelID to send useless messages to.",
+            "required": true
+        },
+        "BOT_NAME": {
+            "description": "The name of your bot.",
+            "required": false
+        },
+		"PREFIX": {
+			"description": "Prefix the bot should use.",
+			"required": false
+		}
+    }
+}
