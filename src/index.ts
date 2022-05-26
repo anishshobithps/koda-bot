@@ -1,4 +1,4 @@
-import './lib/setup';
+import '#lib/setup';
 import { KodaClient } from '#lib/structures/KodaClient';
 
 const client = new KodaClient({

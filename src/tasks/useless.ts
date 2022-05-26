@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 import { ApplyOptions } from '@sapphire/decorators';
 import { Task, type TaskOptions } from '#lib/structures/task/Task';
-import { envParseString } from '#lib/utils/env/parser';
+import { envParseString } from '#env/parser';
 import type { TextChannel } from 'discord.js';
 
 @ApplyOptions<TaskOptions>({

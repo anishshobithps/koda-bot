@@ -1,17 +1,27 @@
 {
 	"jsc": {
 		"parser": {
-			"syntax": "typescript",
-			"decorators": true
-		},
-		"target": "es2020",
+    		"syntax": "typescript",
+    		"tsx": false,
+        	"decorators": true
+    	},
+    	"target": "es2022",
+    	"keepClassNames": true,
+    	"transform": {
+      		"decoratorMetadata": true,
+        	"legacyDecorator": true
+    	},
 		"paths": {
-			"#lib/*": ["./lib/*"]
+			"#lib/*": ["./lib/*"],
+			"#utils/*": ["./lib/utils/*"],
+			"#env/*": ["./lib/utils/env/*"]
 		},
 		"baseUrl": "./src"
-	},
-
-	"module": {
-		"type": "commonjs"
-	}
+  	},
+    "module": {
+		"type": "commonjs",
+		"strict": true,
+		"strictMode": true
+    },
+    "sourceMaps": true
 }

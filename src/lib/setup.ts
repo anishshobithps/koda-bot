@@ -12,7 +12,7 @@ import { config } from 'dotenv-cra';
 import { join } from 'node:path';
 import { inspect } from 'node:util';
 import { readFileSync } from 'node:fs';
-import { srcDir } from './utils/constants';
+import { srcDir } from '#utils/constants';
 import type { PackageJson } from 'type-fest';
 
 const pkg = JSON.parse(readFileSync('./package.json', 'utf-8')) as PackageJson;

@@ -1,7 +1,7 @@
 import { SapphireClient, LogLevel } from '@sapphire/framework';
 import { ClientOptions, User, Team } from 'discord.js';
 import { isNullOrUndefined } from '@sapphire/utilities';
-import {  envParseString } from '#lib/utils/env/parser';
+import {  envParseString } from '#env/parser';
 import { TaskStore } from './task/TaskStore';
 
 export class KodaClient extends SapphireClient {

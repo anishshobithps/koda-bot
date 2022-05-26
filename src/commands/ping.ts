@@ -6,7 +6,7 @@ import type { Message } from 'discord.js';
 @ApplyOptions<CommandOptions>({
 	description: 'ping pong'
 })
-export class UserCommand extends Command {
+export class PingCommand extends Command {
 	public override async messageRun(message: Message) {
 		const msg = await send(message, 'Ping?');
 

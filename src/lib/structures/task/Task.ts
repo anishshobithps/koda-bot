@@ -1,5 +1,6 @@
 import { Piece } from '@sapphire/pieces';
 import cron from 'node-cron';
+import type { ScheduleOptions, ScheduledTask } from 'node-cron';
 import type { PieceContext, PieceJSON, PieceOptions } from '@sapphire/pieces';
 import type { RequireAtLeastOne } from 'type-fest';
 import { Events } from '#lib/utils/events';
@@ -29,14 +30,16 @@ import { Events } from '#lib/utils/events';
 export abstract class Task extends Piece {
   public readonly interval?: number;
   public readonly cron?: string;
+  public scheduleOptions?: ScheduleOptions;
 
   private _scheduleInterval!: NodeJS.Timeout;
-  private _scheduleCron!: cron.ScheduledTask;
+  private _scheduleCron!: ScheduledTask;
   private readonly _callback: (() => Promise<void>);
 
   constructor(context: PieceContext, options: TaskOptions) {
     super(context, options);
 
+	this.scheduleOptions = options.scheduleOptions;
     this.interval = options.interval;
     this.cron = options.cron;
     this._callback = this._run.bind(this);
@@ -46,7 +49,7 @@ export abstract class Task extends Piece {
     if (this.interval)
       this._scheduleInterval = setInterval(this._callback, this.interval);
     else if (this.cron)
-      this._scheduleCron = cron.schedule(this.cron, this._callback);
+      this._scheduleCron = cron.schedule(this.cron, this._callback, this.scheduleOptions);
   }
 
   public onUnload(): void {
@@ -75,4 +78,8 @@ export abstract class Task extends Piece {
   public abstract run(): unknown;
 }
 
-export type TaskOptions = RequireAtLeastOne<PieceOptions & { cron: string; interval: number }, 'cron' | 'interval'>
+export interface BaseTaskOptions extends PieceOptions {
+	scheduleOptions?: ScheduleOptions;
+}
+
+export type TaskOptions = RequireAtLeastOne<BaseTaskOptions & { cron: string; interval: number }, 'cron' | 'interval'>
