@@ -1,6 +1,5 @@
 import { Events, Listener, Store, type ListenerOptions } from '@sapphire/framework';
 import { ApplyOptions } from '@sapphire/decorators';
-import { textSync } from 'figlet';
 import { blue, gray, green, magenta, magentaBright, white, yellow, cyan } from 'colorette';
 import { capitalize } from '#lib/utils/capitalize';
 import { pluralise } from '#lib/utils/pluralise';
@@ -17,6 +16,7 @@ export class ReadyEvent extends Listener {
 	public async run() {
 		this.printBanner();
 		this.printStoreDebugInformation();
+		this.container.client.logger.info(`Logged in as ${green(this.container.client.user?.username!)}.`);
 		await this.runTasks();
 	}
 
@@ -33,9 +33,8 @@ export class ReadyEvent extends Listener {
 
 		console.log(
 			String.raw`
-${green(textSync(this.container.client.user?.username!))}
 ${cyan('Version:')} ${blc((this.container.package.version!))}
-${dev ? `${cyan('MODE:')}${blc('<')}${llc('/')}${blc('>')} ${llc('DEVELOPMENT MODE')}` : 'PRODUCTION MODE'}
+${dev ? `${blc('<')}${llc('/')}${blc('>')} ${llc('DEVELOPMENT MODE')}` : 'PRODUCTION MODE'}
 		`.trim()
 		);
 	}

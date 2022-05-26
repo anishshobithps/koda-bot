@@ -465,13 +465,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/figlet@npm:^1":
-  version: 1.5.4
-  resolution: "@types/figlet@npm:1.5.4"
-  checksum: 25390eaa1a24233b05ec85771cd1a134477ee56717cf564b625cd2133fda963dc78942cfd2303e364406ee0126e722e94761d8c577d74a25820e6b33090a0e32
-  languageName: node
-  linkType: hard
-
 "@types/node-cron@npm:^3":
   version: 3.0.1
   resolution: "@types/node-cron@npm:3.0.1"
@@ -936,13 +929,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"figlet@npm:^1.5.2":
-  version: 1.5.2
-  resolution: "figlet@npm:1.5.2"
-  checksum: cc860391669b44e119871d589e09a2814aa86351726a5791e0d3e2d098e4fc37171c85fcfed13f4e9000995bd004dc6dbf848da5fe458cf1477e776b7318986f
-  languageName: node
-  linkType: hard
-
 "fill-range@npm:^7.0.1":
   version: 7.0.1
   resolution: "fill-range@npm:7.0.1"
@@ -1259,7 +1245,6 @@ __metadata:
     "@sapphire/utilities": ^3.6.2
     "@swc/cli": ^0.1.57
     "@swc/core": ^1.2.189
-    "@types/figlet": ^1
     "@types/node": ^17.0.35
     "@types/node-cron": ^3
     "@types/prettier": ^2
@@ -1267,7 +1252,6 @@ __metadata:
     colorette: ^2.0.16
     discord.js: ^13.7.0
     dotenv-cra: ^3.0.2
-    figlet: ^1.5.2
     node-cron: ^3.0.0
     prettier: ^2.6.2
     reflect-metadata: ^0.1.13

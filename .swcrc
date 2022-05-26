@@ -19,9 +19,7 @@
 		"baseUrl": "./src"
   	},
     "module": {
-		"type": "commonjs",
-		"strict": true,
-		"strictMode": true
+		"type": "es6"
     },
     "sourceMaps": true
 }
